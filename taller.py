@@ -1,4 +1,4 @@
-import scipy as sp
+import scipy.optimize as sp
 import numpy as np
 
 class Derivada:
@@ -110,13 +110,13 @@ class Zeros:
 								return (medio)
 							else:
 								if self.metodo=="newton-sp":
-									sol=sp.optimize.newton(f, vi)
+									sol=sp.newton(f, vi)
 								else:
 									if self.metodo=="fsolve-sp":
-										sol=sp.optimize.newton(f, vi)
+										sol=sp.fsolve(f,vi) 
 									else:
 										if self.metodo=="brentq-sp":
-											sol=sp.optimize.brentq(f, vi[0],vi[1])
+											sol=sp.brentq(f, vi[0],vi[1])
 										else:
 											return "error metodo no valido"
 					return(sol)
@@ -144,11 +144,7 @@ if __name__ == "__main__":
 	sol1=uno1.zero(3)
 	sol2=dos2.zero((3,3.3))
 	sol3=tre3.zero((3,3.3))
-	sol4=sol3
-	sol5=sol3
-	sol6=sol3
-	#posdata el modulo de sp no me esta agarrando el metodo optimize si depronto es mi compu favor descomentariar
-	#sol4=cua4.zero(3)
-	#sol5=cin5.zero((3,3.3))
-	#sol6=sei6.zero((3,3.3))
+	sol4=cua4.zero(3)
+	sol5=cin5.zero(3) 
+	sol6=sei6.zero((3,3.3))
 	print("las zeros estan en :",sol1,sol2,sol3,sol4,sol5,sol6)
